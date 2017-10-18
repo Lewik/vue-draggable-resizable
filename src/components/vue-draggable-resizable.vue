@@ -196,7 +196,16 @@ export default {
         }
 
         if (this.draggable) {
-          this.dragging = true
+          const drags = this.$el.getElementsByClassName('drag')
+          if (drags.length === 0) {
+            this.dragging = true
+          }
+          for (const drag of drags) {
+            if (drag.contains(target)) {
+              this.dragging = true
+              break
+            }
+          }
         }
       }
     },
